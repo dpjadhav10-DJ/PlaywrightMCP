@@ -1,1 +1,10 @@
-aW1wb3J0IHsgdGVzdCwgZXhwZWN0IH0gZnJvbSAnQHBsYXl3cmlnaHQvdGVzdCc7Cgp0ZXN0KCd2ZXJpZnkgRVBBTSBjbGllbnQgd29yayBuYXZpZ2F0aW9uJywgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgYXdhaXQgcGFnZS5nb3RvKCdodHRwczovL3d3dy5lcGFtLmNvbS8nKTsKCiAgYXdhaXQgcGFnZS5nZXRCeVJvbGUoJ2xpbmsnLCB7IG5hbWU6ICdTZXJ2aWNlcycgfSkuY2xpY2soKTsKICBhd2FpdCBwYWdlLmdldEJ5Um9sZSgnbGluaycsIHsgbmFtZTogJ0V4cGxvcmUgT3VyIENsaWVudCBXb3JrJyB9KS5jbGljaygpOwoKICBhd2FpdCBleHBlY3QocGFnZS5nZXRCeVRleHQoJ0NsaWVudCBXb3JrJykpLnRvQmVWaXNpYmxlKCk7Cn0pOwo=
+import { test, expect } from '@playwright/test';
+
+test('verify EPAM client work navigation', async ({ page }) => {
+  await page.goto('https://www.epam.com/');
+
+  await page.getByRole('link', { name: 'Services' }).click();
+  await page.getByRole('link', { name: 'Explore Our Client Work' }).click();
+
+  await expect(page.getByText('Client Work', { exact: false })).toBeVisible();
+});
